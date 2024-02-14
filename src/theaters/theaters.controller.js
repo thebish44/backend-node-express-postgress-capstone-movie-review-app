@@ -2,13 +2,12 @@ const service = require("./theaters.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 async function list(request, response) {
-  // TODO: Add your code here
   if (request.params.movieId) {
-    // TODO - list by movie
+    const data = await service.listTheatersByMovieId(request.params.movieId)
+    response.json({ data });
   }
-
-  const data = await service.list();
-  response.json({ data: data });
+    const data = await service.list();
+    response.json({ data });
 }
 
 module.exports = {
